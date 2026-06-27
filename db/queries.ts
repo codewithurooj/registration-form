@@ -18,3 +18,11 @@ export async function emailExists(email: string): Promise<boolean> {
     .limit(1)
   return result.length > 0
 }
+
+export async function getAllRegistrations() {
+  const db = getDb()
+  return db
+    .select()
+    .from(registrations)
+    .orderBy(registrations.createdAt)
+}
