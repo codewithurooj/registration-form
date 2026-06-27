@@ -1,4 +1,5 @@
 import { eq } from "drizzle-orm"
+import { unstable_noStore as noStore } from "next/cache"
 import { getDb } from "./client"
 import { registrations } from "./schema"
 import type { InsertRegistration } from "./schema"
@@ -20,6 +21,7 @@ export async function emailExists(email: string): Promise<boolean> {
 }
 
 export async function getAllRegistrations() {
+  noStore()
   const db = getDb()
   return db
     .select()
