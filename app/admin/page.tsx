@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { getAllRegistrations } from "@/db/queries"
 
 export const dynamic = "force-dynamic"
@@ -9,11 +10,19 @@ export default async function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Registrations</h1>
-          <p className="text-sm text-gray-500 mt-1">
-            {registrations.length} {registrations.length === 1 ? "submission" : "submissions"} total
-          </p>
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Registrations</h1>
+            <p className="text-sm text-gray-500 mt-1">
+              {registrations.length} {registrations.length === 1 ? "submission" : "submissions"} total
+            </p>
+          </div>
+          <Link
+            href="/"
+            className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+          >
+            ← Registration Form
+          </Link>
         </div>
 
         {registrations.length === 0 ? (

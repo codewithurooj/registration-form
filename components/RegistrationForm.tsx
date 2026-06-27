@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { registrationSchema, type RegistrationFormValues } from "@/lib/validations"
 import { COUNTRIES, COUNTRY_CITIES } from "@/lib/countries"
 import FormField from "./FormField"
@@ -254,6 +255,12 @@ export default function RegistrationForm() {
             <SubmitButton isSubmitting={isSubmitting} />
           </div>
         </form>
+      </div>
+
+      <div className="text-center mt-4">
+        <Link href="/admin" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+          Admin
+        </Link>
       </div>
     </div>
   )
